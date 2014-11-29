@@ -1,19 +1,33 @@
 package com.github.tripville.model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="tripreq")
 public class TripReq {
-	private String tripreqid;
-	public String getTripreqid() {
+	
+	@Id
+	@GeneratedValue
+	private int tripreqid;
+	public int getTripreqid() {
 		return tripreqid;
 	}
-	public void setTripreqid(String tripreqid) {
+	public void setTripreqid(int tripreqid) {
 		this.tripreqid = tripreqid;
 	}
+	
+	
 	public int getTripid() {
 		return tripid;
 	}
 	public void setTripid(int tripid) {
 		this.tripid = tripid;
 	}
+	
+	
 	public String getCopassid() {
 		return copassid;
 	}
