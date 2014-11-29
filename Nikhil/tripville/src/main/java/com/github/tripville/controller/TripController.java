@@ -96,10 +96,10 @@ import com.github.tripville.service.TripService;
 				
 				driverTripList = tripService.getTripsforDriver(loggedInUserId);
 				modelAndView.addObject("driverTripList", driverTripList);
+				modelAndView.addObject("passengerTripList", passengerTripList);
 				System.out.println("~~~~~~~~~~" + driverTripList + driverTripList.size() );
 				//String view_trip_query = "select * from driverhistory where userid=loggedInUserId or copassid=loggedInUserId";
 				return modelAndView;
-				
 			}
 			catch(Exception e){
 				ModelAndView modelAndView = new ModelAndView();
