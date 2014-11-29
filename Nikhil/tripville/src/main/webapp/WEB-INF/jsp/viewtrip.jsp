@@ -84,7 +84,7 @@ View Trip page
 
 
 <c:forEach var="trip" items="${passengerTripList}">
-<>
+
 <tr>
 	<td class="c1"><input type="button"  onclick="pop(this);">${trip.getTripreqid()}</td>
 	<td class="c2">${trip.getTripid()}</td>
