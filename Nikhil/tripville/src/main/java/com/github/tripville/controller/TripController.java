@@ -104,7 +104,7 @@ import com.github.tripville.service.TripService;
 			catch(Exception e){
 				ModelAndView modelAndView = new ModelAndView();
 				modelAndView.setViewName("index");
-				return modelAndView;
+				return modelAndView; // Adding comment
 			}
 		}
 		
