@@ -1,6 +1,7 @@
 package com.github.tripville.model;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -27,6 +28,9 @@ public class SearchTrip {
 	@Column(name = "destinationpt", length = 30)
 	@NotEmpty
 	private String toAddress;
+	
+	@Column(name = "searchlist")
+	private List<Trip> searchList;
 
 
 	public String getFromAddress() {
@@ -42,4 +46,11 @@ public class SearchTrip {
 		this.toAddress = toAddress;
 	}
 
+	public List<Trip> getSearchList() {
+		return searchList;
+		}
+	public void setSearchList(List<Trip> searchlist) {
+		this.searchList = searchlist;
+	}
+	
 }

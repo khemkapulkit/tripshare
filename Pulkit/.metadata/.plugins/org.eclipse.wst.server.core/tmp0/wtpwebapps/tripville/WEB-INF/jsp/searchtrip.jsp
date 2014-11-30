@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -113,7 +114,26 @@
 									<input class="btn btn-primary" type="submit" name="btnClk" value="Reset">
 									<input class="btn btn-primary" type="submit" name="btnClk" value="Cancel">
 								</div>
-
+							
+							
+							<c:if test="${!empty searchlist}">  
+  								<h2>List of Available Trips</h2>  
+ 								<table align="left" border="1">  
+  								<tr>  
+   								<th>Trip ID</th>  
+  								<th>From Address</th>  
+  								<th>To Address</th>
+          						 </tr>  
+  							<c:forEach items="${searchlist}" var="trip">  
+   							<tr>  
+   							 <td><c:out value="${trip.getTripId()}"/></td>  
+   							 <td><c:out value="${trip.getFromAddress()}"/></td>  
+   							 <td><c:out value="${trip.getToAddress()}"/></td>  
+    						<td align="center"><a href="sendrequest.html?id=${trip.getTripId()}">Send Request</a> </td>  
+							</tr>  
+							</c:forEach>  
+							</table>  
+							</c:if>  
 							</fieldset>
 						</form:form>
 					</div>
@@ -121,16 +141,8 @@
 			</div>
 		</div>
 	</div>
-
-		<c:if test="${not empty searchlist}">
- 
-		<ul>
-			<c:forEach var="trip" items="${searchlist}">
-				<li>${trip.tripid}</li>
-			</c:forEach>
-		</ul>
- 
-	</c:if>
-
+	
+	
+	
 </body>
 </html>

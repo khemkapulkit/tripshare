@@ -31,6 +31,7 @@ public class MemberController {
 	@Autowired
 	private MemberLogin studentLogin;
 	
+	
 	@RequestMapping(value="/signup", method=RequestMethod.GET)
 	public String signup(Model model) {
 		Member student = new Member();		

@@ -3,13 +3,17 @@ package com.github.tripville.controller;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
+
 import java.util.List;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -19,10 +23,15 @@ import org.springframework.web.servlet.ModelAndView;
 
 
 
+
+
+
+
 import com.github.tripville.model.Member;
 import com.github.tripville.model.MemberLogin;
 import com.github.tripville.model.SearchTrip;
 import com.github.tripville.model.Trip;
+import com.github.tripville.model.TripReq;
 import com.github.tripville.service.TripService;
 
 	@Controller
@@ -36,7 +45,9 @@ import com.github.tripville.service.TripService;
 		 @Autowired
 			private SearchTrip searchtrip;
 		 
-	
+		 
+			public static String[] selectedtrips;
+			
 		 
 		@RequestMapping(value="/addtrip", method=RequestMethod.GET)
 		public String addtrip(Model model, HttpSession session) {			
@@ -85,7 +96,7 @@ import com.github.tripville.service.TripService;
 		
 		@RequestMapping(value="/searchtrip", method=RequestMethod.GET)
 		public String searchtrip(Model model, HttpSession session) {			
-			searchtrip = new SearchTrip();		
+			searchtrip = new SearchTrip();	
 			model.addAttribute("searchtrip", searchtrip);
 			return "searchtrip";
 		}
@@ -99,13 +110,12 @@ import com.github.tripville.service.TripService;
 				if (result.hasErrors()) {
 					System.out.println(result.getAllErrors());
 				} else {
-					List<Trip> trip = tripService.searchTrip(searchtrip.getFromAddress());
+					List<Trip> trip = tripService.searchTrip(searchtrip.getFromAddress(), searchtrip.getToAddress());
 					for(int i = 0; i < trip.size(); i++) {
 			            System.out.println(trip.get(i).getTripId());
 			        }
 					if (!trip.isEmpty()) {
 						modelAndView.setViewName("searchtrip");
-						MemberLogin user = (MemberLogin) session.getAttribute("student");
 						modelAndView.addObject("searchlist", trip);
 						return modelAndView;
 					} else {				
@@ -127,5 +137,24 @@ import com.github.tripville.service.TripService;
 			modelAndView.setViewName("searchtrip");
 			return modelAndView;
 		}
+		
+		@RequestMapping(value="/sendrequest", method=RequestMethod.GET)
+		public  String sendrequest(Model model, HttpSession session, @RequestParam Map<String, String> map) {			
+			try{
+				TripReq tripRequest = new TripReq();
+				MemberLogin user = (MemberLogin) session.getAttribute("student");
+				String loggedInUserId = tripService.getUserId(user.getUserName()); 
+				System.out.println("loggedInUserId" + loggedInUserId);
+				tripRequest.setCopassid(loggedInUserId);
+				tripRequest.setTripid(Integer.parseInt(map.get("id")));
+				tripRequest.setTripreqid(55);
+				tripRequest.setStatus("Pending");
+				tripService.save(tripRequest);
+				return "home";
+			}catch(Exception e){
+				return "home";
+			}			
+		}
+		
 	}
 

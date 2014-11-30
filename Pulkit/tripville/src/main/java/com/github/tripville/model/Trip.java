@@ -21,7 +21,7 @@ public class Trip {
 
 	
 	
-	
+	@Column(name = "tripid")
 	@Id
 	@GeneratedValue
 	private int tripid;
@@ -152,6 +152,5 @@ public class Trip {
 		this.comments = comments;
 	}
 
-	
 
 }
