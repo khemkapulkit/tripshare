@@ -102,15 +102,52 @@
         <type>tld</type>
     </dependency>
 		
-		<dependency>
-	<groupId>javax.servlet.jsp.jstl</groupId>
-	<artifactId>jstl-api</artifactId>
-	<version>1.2</version>
-</dependency>
+	<dependency>
+		<groupId>javax.servlet.jsp.jstl</groupId>
+		<artifactId>jstl-api</artifactId>
+		<version>1.2</version>
+	</dependency>
 <dependency>
+            <groupId>javax</groupId>
+            <artifactId>javaee-web-api</artifactId>
+            <version>6.0</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.sun.faces</groupId>
+            <artifactId>jsf-api</artifactId>
+            <version>2.2.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.sun.faces</groupId>
+            <artifactId>jsf-impl</artifactId>
+            <version>2.2.0</version>
+</dependency>
+<!--  <dependency>
+			<groupId>com.sun.faces</groupId>
+			<artifactId>jsf-api</artifactId>
+			<version>2.1.7</version>
+		</dependency>
+		<dependency>
+			<groupId>com.sun.faces</groupId>
+			<artifactId>jsf-impl</artifactId>
+			<version>2.1.7</version>
+		</dependency>
+ <dependency>
 	<groupId>javax.faces</groupId>
 	<artifactId>jsf-api</artifactId>
 	<version>2.1</version>
+	<scope>provided</scope>
+</dependency> -->
+<!--  <dependency>
+  <groupId>javax.faces</groupId>
+  <artifactId>javax.faces-api</artifactId>
+  <version>2.2</version>
+</dependency>-->
+<dependency>
+	<groupId>javax.faces</groupId>
+	<artifactId>jsf-impl</artifactId>
+	<version>1.2_14</version>
 </dependency>
 		
 	</dependencies>

@@ -6,6 +6,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Future;
 import javax.validation.constraints.NotNull;
@@ -149,6 +151,14 @@ public class Trip {
 	public void setComments(String comments) {
 		this.comments = comments;
 	}
+	
+	@ManyToOne
+	@JoinColumn(name = "userid", referencedColumnName = "id", insertable = false, updatable = false)
+    private Member user;
+	
+	public Member getUser() {
+        return user;
+    }
 
 
 }

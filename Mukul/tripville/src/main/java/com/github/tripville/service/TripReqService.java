@@ -9,7 +9,11 @@ public interface TripReqService {
 
 	//TripReq t_req(TripReq t_req);
 	
-	ArrayList<TripReq> getTripsforPassenger(String userName);//passenger id as userid
+	TripReq save(TripReq tripReq);
+	
+	ArrayList<TripReq> getTripsforPassenger(String loggedInUserId);//passenger id as userid
 	
 	ArrayList<TripReq> getTripRequestsForTrip(int tripId);
+	
+	TripReq getTripRequestDetails(int tripReqId);
 }

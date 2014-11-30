@@ -3,6 +3,8 @@ package com.github.tripville.model;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -39,6 +41,16 @@ public class TripReq {
 	private int tripid;
 	private String copassid;
 	private String status;
+	
+	
+	@ManyToOne
+	@JoinColumn(name = "tripid", referencedColumnName = "tripid", insertable = false, updatable = false)
+    private Trip trip;
+	
+	public Trip getTrip() {
+        return trip;
+    }
+
 	@Override
 	public String toString() {
 		return "TripReq [tripreqid=" + tripreqid + ", tripid=" + tripid

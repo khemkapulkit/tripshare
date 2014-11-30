@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.github.tripville.model.Trip;
 import com.github.tripville.model.TripReq;
@@ -22,9 +23,8 @@ public class TripReqServiceImpl implements TripReqService {
 	}
 
 
-	public ArrayList<TripReq> getTripsforPassenger(String userName) {
-		
-		return null;
+	public ArrayList<TripReq> getTripsforPassenger(String loggedInUserId) {
+		return tripReqRepository.getTripsforPassenger(loggedInUserId);
 	}
 
 
@@ -33,5 +33,19 @@ public class TripReqServiceImpl implements TripReqService {
 		return tripReqRepository.getTripRequestsForTrip(tripId);
 		
 	}
+
+
+	public TripReq getTripRequestDetails(int tripReqId) {
+		System.out.println("~~~~~~~~~~~~ in IMPL" + tripReqId); 
+		return tripReqRepository.getTripRequestDetails(tripReqId);
+	}
+
+	
+	@Transactional
+	public TripReq save(TripReq tripReq) {
+		return tripReqRepository.save(tripReq);
+	}
+	
+	
 
 }

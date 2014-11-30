@@ -1,6 +1,8 @@
 package com.github.tripville.repository;
 
 import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
@@ -15,6 +17,9 @@ public interface TripRepository extends CrudRepository<Trip, Long> {//extends Jp
 	
 	@Query("select t from Trip t where t.tripid = :tripId")
 	Trip findByTripId(@Param("tripId") int tripId);
+	
+	@Query("select t from Trip t where t.fromAddress = :startpt and  t.toAddress  = :destinationpt")
+	List<Trip> searchTrip(@Param("startpt") String startpt, @Param("destinationpt") String destinationpt);
 	
 	@Query("select m from Member m where m.userName = :userName")
 	Member getUserInfo(@Param("userName") String userName);

@@ -1,17 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Tripville - Create New Trip</title>
-<link href="bootstrap/css/bootstrap.css" rel="stylesheet" />
-<link href="datepicker/css/datepicker.css" rel="stylesheet" />
 <link href="assets/css/bootstrap-united.css" rel="stylesheet" />
 
 <style>
@@ -37,6 +33,7 @@
 	margin-bottom: 10px;
 }
 </style>
+<title>Tripville - Manage Trip</title>
 </head>
 <body>
 	<script src="jquery-1.8.3.js">
@@ -69,27 +66,19 @@
 		</div>
 		<!-- /.nav-collapse -->
 	</div>
-	<script src="jquery-1.8.3.js">
-		
-	</script>
 
-	<script src="bootstrap/js/bootstrap.js">
-		
-	</script>
-
-	<script src="datepicker/js/bootstrap-datepicker.js">
-		
-	</script>
 	<div class="container">
 		<div class="jumbotron">
 			<div>
-				<h2>Add New Trip</h2>
+				<h3>Manage trip from ${trip.fromAddress} to ${trip.toAddress} on ${formattedStartDate}</h3>
 			</div>
 		</div>
 
 		<div></div>
 	</div>
-
+	
+	
+	      
 	<c:if test="${not empty message}">
 		<div class="message green" font-size="175%">${message}</div>
 	</c:if>
@@ -102,90 +91,104 @@
 						<form:form id="myForm" method="post"
 							class="bs-example form-horizontal" commandName="trip">
 							<fieldset>
-								<legend> New Trip</legend>
+								<!-- <legend> New Trip</legend> -->
 
 								<div class="form-group">
 									<label for="fromAddressInput" class="col-lg-3 control-label">From</label>
 									<div class="col-lg-9">
-										<form:input type="text" class="form-control" path="fromAddress"
-											id="fromAddressInput" placeholder="From" />
-										<form:errors path="fromAddress" cssClass="error" />
+										<label for="fromAddressInput" class="col-lg-3 control-label">${trip.fromAddress}</label>
+										
 									</div>
 								</div>
 
 								<div class="form-group">
 									<label for="toAddressInput" class="col-lg-3 control-label">To</label>
 									<div class="col-lg-9">
-										<form:input type="text" class="form-control"
-											path="toAddress" id="toAddressInput" placeholder="To" />
-										<form:errors path="toAddress" cssClass="error" />
+									<label for="toAddressInput" class="col-lg-3 control-label">${trip.toAddress}</label>
 									</div>
 								</div>
+
 								
 								<div class="form-group">
-									<label for="dateOfBirthInput" class="col-lg-3 control-label">Start Date</label>
-									<div class="date form_date col-lg-9" data-date-format="mm/dd/yyyy" data-date-viewmode="years">
-										<form:input type="text" class="form-control"											
-											path="startDate" id="dateOfBirthInput"
-											placeholder="Start Date" />
-										<form:errors path="startDate" cssClass="error" />
+									<label for="startDateInput" class="col-lg-3 control-label">Start Date</label>
+									<div class="date form_date col-lg-9">
+										<label for="startDateInput" class="col-lg-3 control-label"><fmt:formatDate value="${trip.startDate}" pattern="MM/dd/yyyy"/></label>
 									</div>
 								</div>
-								
 								<div class="form-group">
 									<label for="startTimeInput" class="col-lg-3 control-label">Start Time</label>
 									<div class="col-lg-9">
-										<form:input type="text" class="form-control"
-											path="startTime" id="startTimeInput" placeholder="Start Time" />
-										<form:errors path="startTime" cssClass="error" />
+										<label for="startTimeInput" class="col-lg-3 control-label"><fmt:formatDate value="${trip.startTime}" pattern="MM/dd/yyyy"/></label>
 									</div>
 								</div>
 								<div class="form-group">
 									<label for="numofcopassengersInput" class="col-lg-3 control-label">No of Co-Passengers</label>
 									<div class="col-lg-9">
-										<form:input type="text" class="form-control"
-											path="numofcopassengers" id="numofcopassengersInput" placeholder="No of Co-Passengers" />
-										<form:errors path="numofcopassengers" cssClass="error" />
+										<label for="numofcopassengersInput" class="col-lg-3 control-label">${trip.numofcopassengers}</label>
 									</div>
 								</div>																
 								<div class="form-group">
 									<label for="rentInput" class="col-lg-3 control-label">Cost per person</label>
 									<div class="col-lg-9">
-										<form:input type="text" class="form-control"
-											path="rent" id="rentInput" placeholder="Cost per person" />
-										<form:errors path="rent" cssClass="error" />
+										<label for="rentInput" class="col-lg-3 control-label">${trip.rent}</label>
 									</div>
 								</div>
 								<div class="form-group">
 									<label for="commentsInput" class="col-lg-3 control-label">Comments</label>
 									<div class="col-lg-9">
-										<form:input type="text" class="form-control"
-											path="comments" id="commentsInput" placeholder="Comments" />
-										<form:errors path="comments" cssClass="error" />
+										<label for="commentsInput" class="col-lg-3 control-label">${trip.comments}</label>
 									</div>
-								</div>
+								</div> 
 
 								
-								<div class="col-lg-9 col-lg-offset-3">
+								<!-- <div class="col-lg-9 col-lg-offset-3">
 									<input class="btn btn-primary" type="submit" name="btnClk" value="Submit">
 									<input class="btn btn-primary" type="submit" name="btnClk" value="Reset">
 									<input class="btn btn-primary" type="submit" name="btnClk" value="Cancel">
-								</div>
+								</div>  -->
 
 							</fieldset>
+							
+							<c:if test="${not empty tripRequestList}">
+							<br>
+							<br>
+							
+							<table class="table table-striped">
+							 <tr>
+							    <th>Sent By</th>
+							    <th>Status</th>
+							    <th>Action</th>
+							  </tr>
+							
+							
+							<c:forEach var="tripReq" items="${tripRequestList}">
+							
+							<tr>
+								<td>${tripReq.copassid} </td>
+								<td>${tripReq.status} </td>
+								<td>
+									<a href="http://localhost:8080/tripville/processTripRequest.html?reqId=${tripReq.tripreqid}&status=Approve"> Approve</a> / 
+									<a href="http://localhost:8080/tripville/processTripRequest.html?reqId=${tripReq.tripreqid}&status=Decline"> Decline</a>
+								</td>
+							</tr>
+							</c:forEach>
+							
+							</table>
+							
+							</c:if>
+							
+							<div class="col-lg-9 col-lg-offset-3">
+									<input class="btn btn-primary" type="submit" name="btnClk" value="Go Back">
+							</div>
+							
+							
 						</form:form>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-	
-	<script>
-		$(function() {
-			$('#dateOfBirthInput').datepicker();
-		});
-	</script>
-	
+
 
 </body>
 </html>

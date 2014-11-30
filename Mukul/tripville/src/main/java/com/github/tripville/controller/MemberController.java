@@ -94,7 +94,7 @@ public class MemberController {
 		}
 		catch(Exception e){
 			ModelAndView modelAndView = new ModelAndView();
-			modelAndView.setViewName("index");
+			modelAndView.setViewName("redirect:/login.html");
 			return modelAndView;
 		}
 		
