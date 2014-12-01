@@ -70,7 +70,7 @@
 	<div class="container">
 		<div class="jumbotron">
 			<div>
-				<h3>Update driver history for the trip from ${trip.fromAddress} to ${trip.toAddress} on ${formattedStartDate}</h3>
+				<h3>Rate the driver for the trip from ${trip.fromAddress} to ${trip.toAddress} on ${formattedStartDate}</h3>
 			</div>
 		</div>
 
@@ -83,11 +83,11 @@
 		<div class="message green" font-size="175%">${message}</div>
 	</c:if>
 	
-	<div class="col-lg-6 col-lg-offset-3">
+	<div class="col-lg-6 col-lg-offset-3" style="margin-left: 10%; width:75%">
 		<div class="well">
 			<div class="container">
 				<div class="row">
-					<div class="col-lg-6">
+					<div class="col-lg-6" style="width:75%">
 						<form:form id="myForm" method="post"
 							class="bs-example form-horizontal" commandName="driverHistory">
 							<fieldset>

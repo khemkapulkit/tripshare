@@ -94,11 +94,11 @@
 		<div class="message green" font-size="175%">${message}</div>
 	</c:if>
 	
-	<div class="col-lg-6 col-lg-offset-3">
+	<div class="col-lg-6 col-lg-offset-3" style="margin-left: 10%; width:75%">
 		<div class="well">
 			<div class="container">
 				<div class="row">
-					<div class="col-lg-6">
+					<div class="col-lg-6" style="width:75%">
 						<form:form id="myForm" method="post"
 							class="bs-example form-horizontal" commandName="trip">
 							<fieldset>

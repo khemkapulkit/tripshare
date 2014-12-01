@@ -102,12 +102,13 @@ public class MemberController {
 	}
 	@RequestMapping(value="/home", method=RequestMethod.POST)
 	public ModelAndView home(@Valid @ModelAttribute("student") MemberLogin studentLogin, BindingResult result, Model model, HttpSession session, @RequestParam("btnClk") String request) {			
+		System.out.println("~~~~~~~~~~~~~~request" + request );
 		ModelAndView modelAndView = new ModelAndView();  
 		if (request.contains("Add")) {
 			modelAndView.setViewName("redirect:/addtrip.html");
 		} else if (request.contains("Search")) {
 			modelAndView.setViewName("redirect:/searchtrip.html");
-		} else if (request.contains("View")) {
+		} else if (request.contains("Manage")) {
 			modelAndView.setViewName("redirect:/viewtrip.html");
 		}
 		
